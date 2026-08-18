@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #ffffff;
+  --color-foreground: #1a1a1a;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a1a;
+  --color-primary: #ff6a00;
+  --color-primary-foreground: #ffffff;
+  --color-brand-yellow: #ffb732;
+  --color-secondary: #fff4e8;
+  --color-secondary-foreground: #cc4a00;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #fff4e8;
+  --color-accent-foreground: #cc4a00;
+  --color-border: #e8e4df;
+  --color-success: #22a06b;
+  --color-success-foreground: #ffffff;
+  --color-destructive: #e5484d;
+  --color-destructive-foreground: #ffffff;
+
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .quiz-option {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    border: 2px solid var(--color-border);
+    background: var(--color-card);
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    color: var(--color-card-foreground);
+    transition: all 0.2s ease;
+  }
+
+  .quiz-option:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    background: var(--color-secondary);
+  }
+
+  .quiz-option.selected {
+    border-color: var(--color-primary);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+  }
+
+  .quiz-option:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .btn-brand {
+    background: linear-gradient(135deg, #ff6a00 0%, #ff8a00 45%, #ffb732 100%);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(255, 106, 0, 0.35);
+  }
+
+  .btn-brand:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+
+  .progress-brand {
+    background: linear-gradient(90deg, #ff6a00 0%, #ffb732 100%);
+  }
+
+  .text-brand {
+    background: linear-gradient(135deg, #ff6a00 0%, #ffb732 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.4s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}

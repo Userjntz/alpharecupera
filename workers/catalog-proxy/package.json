@@ -1,0 +1,7 @@
+{
+  "name": "alpha-recupera-catalog-proxy",
+  "private": true,
+  "scripts": {
+    "deploy": "npx wrangler deploy"
+  }
+}

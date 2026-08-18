@@ -1,0 +1,27 @@
+name = "alpha-recupera-api"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["global_fetch_strictly_public"]
+workers_dev = true
+preview_urls = true
+
+[[kv_namespaces]]
+binding = "LEADS_KV"
+id = "3f6011b814af49e8bb3ff9f10082b144"
+preview_id = "c067db1a4464473390401d456f6564de"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "alpha-recupera-db"
+database_id = "8db6f242-e3f9-496d-8822-7e58fe71d1a0"
+migrations_dir = "migrations"
+
+[vars]
+FB_PIXEL_ID = "1731098261462427"
+QUIZ_URL = "https://alpharecupera.com.br"
+ADMIN_EMAIL = "admin@alpharecupera.com.br"
+ADMIN_APP_URL = "https://admin.alpharecupera.com.br"
+META_GRAPH_VERSION = "v22.0"
+
+[triggers]
+crons = ["*/2 * * * *"]

@@ -1,0 +1,20 @@
+name = "alpha-recupera-quiz-proxy"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+workers_dev = false
+
+[[routes]]
+pattern = "alpharecupera.com.br/*"
+zone_name = "alpharecupera.com.br"
+
+[[routes]]
+pattern = "alpharecupera.com.br"
+zone_name = "alpharecupera.com.br"
+
+[[routes]]
+pattern = "www.alpharecupera.com.br/*"
+zone_name = "alpharecupera.com.br"
+
+[[routes]]
+pattern = "www.alpharecupera.com.br"
+zone_name = "alpharecupera.com.br"

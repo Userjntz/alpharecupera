@@ -1,0 +1,45 @@
+{
+  "name": "quiz-alpharecupera",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:quiz": "vite --host 127.0.0.1 --port 5173",
+    "dev:admin": "npm run dev --prefix admin",
+    "dev:catalogo": "npm run dev --prefix catalogo",
+    "dev:hub": "npm run dev --prefix hub",
+    "dev:api": "node --env-file=.env --experimental-strip-types server/leads-api.mjs",
+    "dev:all": "node --env-file=.env --experimental-strip-types server/leads-api.mjs & vite --host 127.0.0.1 --port 5173 & npm run dev --prefix admin & npm run dev --prefix catalogo & npm run dev --prefix hub",
+    "build": "tsc -b && vite build",
+    "build:admin": "npm run build --prefix admin",
+    "build:catalogo": "npm run build --prefix catalogo",
+    "build:hub": "npm run build --prefix hub",
+    "deploy:api": "npm run deploy --prefix workers/api",
+    "deploy:admin": "npm run build:admin && npx wrangler pages deploy admin/dist --project-name alpharecupera-admin --commit-dirty=true && npm run deploy --prefix workers/admin-proxy",
+    "deploy:quiz": "npm run build && npx wrangler pages deploy dist --project-name alpharecupera-quiz --commit-dirty=true && npm run deploy --prefix workers/quiz-proxy",
+    "deploy:catalogo": "npm run build:catalogo && npx wrangler pages deploy catalogo/dist --project-name alpharecupera-catalogo --commit-dirty=true && npm run deploy --prefix workers/catalog-proxy",
+    "deploy:hub": "npm run build:hub && npx wrangler pages deploy hub/dist --project-name alpharecupera-hub --commit-dirty=true && npm run deploy --prefix workers/hub-proxy",
+    "deploy:all": "npm run deploy:api && npm run deploy:quiz && npm run deploy:admin && npm run deploy:catalogo && npm run deploy:hub",
+    "lint": "oxlint",
+    "test": "node --experimental-strip-types --test tests/marketing.test.ts shared/admin.test.ts shared/captadorCampaign.test.ts shared/proposta.test.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.2",
+    "lucide-react": "^1.30.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "oxlint": "^1.75.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  }
+}
